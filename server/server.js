@@ -6,6 +6,9 @@ dotenv.config({ path: "../.env" });
 const app = express();
 const port = 3001;
 
+const VITE_DISCORD_CLIENT_ID = Deno.env.get('VITE_DISCORD_CLIENT_ID');
+const DISCORD_CLIENT_SECRET = Deno.env.get('DISCORD_CLIENT_SECRET');
+
 // Allow express to parse JSON bodies
 app.use(express.json());
 
@@ -18,8 +21,8 @@ app.post("/api/token", async (req, res) => {
       "Content-Type": "application/x-www-form-urlencoded",
     },
     body: new URLSearchParams({
-      client_id: process.env.VITE_DISCORD_CLIENT_ID,
-      client_secret: process.env.DISCORD_CLIENT_SECRET,
+      client_id: VITE_DISCORD_CLIENT_ID,
+      client_secret: DISCORD_CLIENT_SECRET,
       grant_type: "authorization_code",
       code: req.body.code,
     }),
