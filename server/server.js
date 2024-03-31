@@ -1,6 +1,6 @@
-import express from "express";
-import dotenv from "dotenv";
-import fetch from "node-fetch";
+import express from "npm:express";
+import dotenv from "npm:dotenv";
+import fetch from "npm:node-fetch";
 dotenv.config({ path: "../.env" });
 
 const app = express();
